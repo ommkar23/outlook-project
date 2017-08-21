@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		030F17891F431F4A007BC41A /* EventViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F17881F431F4A007BC41A /* EventViews.swift */; };
+		030F178C1F438CEE007BC41A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F178B1F438CEE007BC41A /* Utility.swift */; };
+		030F178E1F43BBD7007BC41A /* ViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F178D1F43BBD7007BC41A /* ViewProtocols.swift */; };
+		034EFE081F420E5500509162 /* CalendarEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EFE041F420E5500509162 /* CalendarEventTests.swift */; };
+		034EFE091F420E5500509162 /* CalendarModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EFE051F420E5500509162 /* CalendarModelTests.swift */; };
+		034EFE0A1F420E5500509162 /* EventLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EFE061F420E5500509162 /* EventLocationTests.swift */; };
+		034EFE0B1F420E5500509162 /* EventPersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EFE071F420E5500509162 /* EventPersonTests.swift */; };
+		034EFE0E1F420F4F00509162 /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EFE0C1F420F4F00509162 /* CalendarDay.swift */; };
+		034EFE0F1F420F4F00509162 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EFE0D1F420F4F00509162 /* CalendarEvent.swift */; };
+		034EFE111F420FB000509162 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EFE101F420FB000509162 /* CalendarModel.swift */; };
+		034EFE391F421D6500509162 /* Events.json in Resources */ = {isa = PBXBuildFile; fileRef = 034EFE381F421D6500509162 /* Events.json */; };
+		034EFE3B1F421D9C00509162 /* EventPersons.json in Resources */ = {isa = PBXBuildFile; fileRef = 034EFE3A1F421D9C00509162 /* EventPersons.json */; };
+		03953FC01F3EC89C00D213CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03953FBF1F3EC89C00D213CB /* AppDelegate.swift */; };
+		03953FC21F3EC89C00D213CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03953FC11F3EC89C00D213CB /* ViewController.swift */; };
+		03953FC71F3EC89C00D213CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03953FC61F3EC89C00D213CB /* Assets.xcassets */; };
+		03953FCA1F3EC89C00D213CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03953FC81F3EC89C00D213CB /* LaunchScreen.storyboard */; };
+		03953FD51F3EC89D00D213CB /* Outlook_OmmkarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03953FD41F3EC89D00D213CB /* Outlook_OmmkarTests.swift */; };
+		03953FE41F4037EB00D213CB /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03953FE31F4037EB00D213CB /* CalendarCell.swift */; };
+		03953FF91F40A14200D213CB /* Events.json in Resources */ = {isa = PBXBuildFile; fileRef = 03953FF81F40A14200D213CB /* Events.json */; };
+		03953FFB1F41540A00D213CB /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03953FFA1F41540A00D213CB /* UtilityViews.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03953FD11F3EC89D00D213CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03953FB41F3EC89C00D213CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03953FBB1F3EC89C00D213CB;
+			remoteInfo = "Outlook-Ommkar";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		030F17881F431F4A007BC41A /* EventViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViews.swift; sourceTree = "<group>"; };
+		030F178B1F438CEE007BC41A /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		030F178D1F43BBD7007BC41A /* ViewProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocols.swift; sourceTree = "<group>"; };
+		034EFE041F420E5500509162 /* CalendarEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventTests.swift; sourceTree = "<group>"; };
+		034EFE051F420E5500509162 /* CalendarModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModelTests.swift; sourceTree = "<group>"; };
+		034EFE061F420E5500509162 /* EventLocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLocationTests.swift; sourceTree = "<group>"; };
+		034EFE071F420E5500509162 /* EventPersonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPersonTests.swift; sourceTree = "<group>"; };
+		034EFE0C1F420F4F00509162 /* CalendarDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
+		034EFE0D1F420F4F00509162 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		034EFE101F420FB000509162 /* CalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		034EFE381F421D6500509162 /* Events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Events.json; sourceTree = "<group>"; };
+		034EFE3A1F421D9C00509162 /* EventPersons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EventPersons.json; sourceTree = "<group>"; };
+		03953FBC1F3EC89C00D213CB /* Outlook-Ommkar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outlook-Ommkar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03953FBF1F3EC89C00D213CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03953FC11F3EC89C00D213CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		03953FC61F3EC89C00D213CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03953FC91F3EC89C00D213CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		03953FCB1F3EC89C00D213CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03953FD01F3EC89D00D213CB /* Outlook-OmmkarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Outlook-OmmkarTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03953FD41F3EC89D00D213CB /* Outlook_OmmkarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outlook_OmmkarTests.swift; sourceTree = "<group>"; };
+		03953FD61F3EC89D00D213CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03953FE31F4037EB00D213CB /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		03953FF81F40A14200D213CB /* Events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Events.json; sourceTree = "<group>"; };
+		03953FFA1F41540A00D213CB /* UtilityViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03953FB91F3EC89C00D213CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03953FCD1F3EC89D00D213CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03953FB31F3EC89C00D213CB = {
+			isa = PBXGroup;
+			children = (
+				03953FBE1F3EC89C00D213CB /* Outlook-Ommkar */,
+				03953FD31F3EC89D00D213CB /* Outlook-OmmkarTests */,
+				03953FBD1F3EC89C00D213CB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		03953FBD1F3EC89C00D213CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03953FBC1F3EC89C00D213CB /* Outlook-Ommkar.app */,
+				03953FD01F3EC89D00D213CB /* Outlook-OmmkarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03953FBE1F3EC89C00D213CB /* Outlook-Ommkar */ = {
+			isa = PBXGroup;
+			children = (
+				03953FF81F40A14200D213CB /* Events.json */,
+				03953FE21F40373700D213CB /* Views */,
+				03953FDF1F3EC94100D213CB /* Model */,
+				03953FBF1F3EC89C00D213CB /* AppDelegate.swift */,
+				03953FC11F3EC89C00D213CB /* ViewController.swift */,
+				03953FC61F3EC89C00D213CB /* Assets.xcassets */,
+				03953FC81F3EC89C00D213CB /* LaunchScreen.storyboard */,
+				03953FCB1F3EC89C00D213CB /* Info.plist */,
+				030F178B1F438CEE007BC41A /* Utility.swift */,
+			);
+			path = "Outlook-Ommkar";
+			sourceTree = "<group>";
+		};
+		03953FD31F3EC89D00D213CB /* Outlook-OmmkarTests */ = {
+			isa = PBXGroup;
+			children = (
+				03953FD41F3EC89D00D213CB /* Outlook_OmmkarTests.swift */,
+				034EFE041F420E5500509162 /* CalendarEventTests.swift */,
+				034EFE051F420E5500509162 /* CalendarModelTests.swift */,
+				034EFE061F420E5500509162 /* EventLocationTests.swift */,
+				034EFE071F420E5500509162 /* EventPersonTests.swift */,
+				03953FD61F3EC89D00D213CB /* Info.plist */,
+				034EFE381F421D6500509162 /* Events.json */,
+				034EFE3A1F421D9C00509162 /* EventPersons.json */,
+			);
+			path = "Outlook-OmmkarTests";
+			sourceTree = "<group>";
+		};
+		03953FDF1F3EC94100D213CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				034EFE101F420FB000509162 /* CalendarModel.swift */,
+				034EFE0C1F420F4F00509162 /* CalendarDay.swift */,
+				034EFE0D1F420F4F00509162 /* CalendarEvent.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		03953FE21F40373700D213CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				03953FE31F4037EB00D213CB /* CalendarCell.swift */,
+				03953FFA1F41540A00D213CB /* UtilityViews.swift */,
+				030F17881F431F4A007BC41A /* EventViews.swift */,
+				030F178D1F43BBD7007BC41A /* ViewProtocols.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03953FBB1F3EC89C00D213CB /* Outlook-Ommkar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03953FD91F3EC89D00D213CB /* Build configuration list for PBXNativeTarget "Outlook-Ommkar" */;
+			buildPhases = (
+				03953FB81F3EC89C00D213CB /* Sources */,
+				03953FB91F3EC89C00D213CB /* Frameworks */,
+				03953FBA1F3EC89C00D213CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Outlook-Ommkar";
+			productName = "Outlook-Ommkar";
+			productReference = 03953FBC1F3EC89C00D213CB /* Outlook-Ommkar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03953FCF1F3EC89D00D213CB /* Outlook-OmmkarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03953FDC1F3EC89D00D213CB /* Build configuration list for PBXNativeTarget "Outlook-OmmkarTests" */;
+			buildPhases = (
+				03953FCC1F3EC89D00D213CB /* Sources */,
+				03953FCD1F3EC89D00D213CB /* Frameworks */,
+				03953FCE1F3EC89D00D213CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03953FD21F3EC89D00D213CB /* PBXTargetDependency */,
+			);
+			name = "Outlook-OmmkarTests";
+			productName = "Outlook-OmmkarTests";
+			productReference = 03953FD01F3EC89D00D213CB /* Outlook-OmmkarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03953FB41F3EC89C00D213CB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Ommkar Pattnaik";
+				TargetAttributes = {
+					03953FBB1F3EC89C00D213CB = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					03953FCF1F3EC89D00D213CB = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 03953FBB1F3EC89C00D213CB;
+					};
+				};
+			};
+			buildConfigurationList = 03953FB71F3EC89C00D213CB /* Build configuration list for PBXProject "Outlook-Ommkar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03953FB31F3EC89C00D213CB;
+			productRefGroup = 03953FBD1F3EC89C00D213CB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03953FBB1F3EC89C00D213CB /* Outlook-Ommkar */,
+				03953FCF1F3EC89D00D213CB /* Outlook-OmmkarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03953FBA1F3EC89C00D213CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03953FCA1F3EC89C00D213CB /* LaunchScreen.storyboard in Resources */,
+				03953FF91F40A14200D213CB /* Events.json in Resources */,
+				03953FC71F3EC89C00D213CB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03953FCE1F3EC89D00D213CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				034EFE391F421D6500509162 /* Events.json in Resources */,
+				034EFE3B1F421D9C00509162 /* EventPersons.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03953FB81F3EC89C00D213CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				034EFE111F420FB000509162 /* CalendarModel.swift in Sources */,
+				03953FC21F3EC89C00D213CB /* ViewController.swift in Sources */,
+				030F178E1F43BBD7007BC41A /* ViewProtocols.swift in Sources */,
+				030F178C1F438CEE007BC41A /* Utility.swift in Sources */,
+				034EFE0E1F420F4F00509162 /* CalendarDay.swift in Sources */,
+				030F17891F431F4A007BC41A /* EventViews.swift in Sources */,
+				03953FC01F3EC89C00D213CB /* AppDelegate.swift in Sources */,
+				03953FFB1F41540A00D213CB /* UtilityViews.swift in Sources */,
+				03953FE41F4037EB00D213CB /* CalendarCell.swift in Sources */,
+				034EFE0F1F420F4F00509162 /* CalendarEvent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03953FCC1F3EC89D00D213CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				034EFE081F420E5500509162 /* CalendarEventTests.swift in Sources */,
+				034EFE0A1F420E5500509162 /* EventLocationTests.swift in Sources */,
+				034EFE0B1F420E5500509162 /* EventPersonTests.swift in Sources */,
+				034EFE091F420E5500509162 /* CalendarModelTests.swift in Sources */,
+				03953FD51F3EC89D00D213CB /* Outlook_OmmkarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03953FD21F3EC89D00D213CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03953FBB1F3EC89C00D213CB /* Outlook-Ommkar */;
+			targetProxy = 03953FD11F3EC89D00D213CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		03953FC81F3EC89C00D213CB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03953FC91F3EC89C00D213CB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		03953FD71F3EC89D00D213CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		03953FD81F3EC89D00D213CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		03953FDA1F3EC89D00D213CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Outlook-Ommkar/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "op.Outlook-Ommkar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		03953FDB1F3EC89D00D213CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Outlook-Ommkar/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "op.Outlook-Ommkar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		03953FDD1F3EC89D00D213CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Outlook-OmmkarTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "op.Outlook-OmmkarTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Outlook-Ommkar.app/Outlook-Ommkar";
+			};
+			name = Debug;
+		};
+		03953FDE1F3EC89D00D213CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Outlook-OmmkarTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "op.Outlook-OmmkarTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Outlook-Ommkar.app/Outlook-Ommkar";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03953FB71F3EC89C00D213CB /* Build configuration list for PBXProject "Outlook-Ommkar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03953FD71F3EC89D00D213CB /* Debug */,
+				03953FD81F3EC89D00D213CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03953FD91F3EC89D00D213CB /* Build configuration list for PBXNativeTarget "Outlook-Ommkar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03953FDA1F3EC89D00D213CB /* Debug */,
+				03953FDB1F3EC89D00D213CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03953FDC1F3EC89D00D213CB /* Build configuration list for PBXNativeTarget "Outlook-OmmkarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03953FDD1F3EC89D00D213CB /* Debug */,
+				03953FDE1F3EC89D00D213CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03953FB41F3EC89C00D213CB /* Project object */;
+}
