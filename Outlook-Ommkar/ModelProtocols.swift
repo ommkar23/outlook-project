@@ -21,6 +21,7 @@ protocol CalendarDayInformation {
     //Information regarding a particular day
     var day: Int { get }
     var month: Int { get }
+    var year: Int { get }
     var hasEvent: Bool { get }
     var eventCount: Int { get }
     var isSelected: Bool { get }
@@ -33,6 +34,7 @@ protocol CalendarDayInformation {
 
 protocol EventInformation {
     //Information regarding an event in a day
+    var startDate: Date { get }
     var durationString: String { get }
     var startTimeString: String { get }
     var status: ColorRepresentable { get }

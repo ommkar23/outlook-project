@@ -302,6 +302,7 @@ class EventBasicInfoCell: UITableViewCell, EventInformationDisplay {
     }
     
     private func configureComponents() {
+        selectionStyle = .none
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont.systemFont(ofSize: 16.0)
         titleLabel.textColor = UIColor.darkText

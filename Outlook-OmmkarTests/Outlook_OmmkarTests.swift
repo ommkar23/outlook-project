@@ -39,6 +39,17 @@ class TestFileReader {
         }
     }
     
+    func readDictionary(fileName: String, extn: String = "json")-> [AnyHashable: Any]? {
+        guard let data = readFile(fileName: fileName) else { return nil }
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            return json as? [AnyHashable: Any]
+        }
+        catch {
+            return nil
+        }
+    }
+    
     func readFile(fileName: String, extn: String = "json")-> Data? {
         guard let fileUrl = Bundle.main.url(forResource: fileName, withExtension: extn) else { return nil }
         do {
