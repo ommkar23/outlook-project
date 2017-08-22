@@ -70,7 +70,7 @@ class CalendarSelectedDateCell: CalendarCell {
         dateLabel.font = UIFont.systemFont(ofSize: 18)
         dateLabel.textColor = .white
         dateLabel.textAlignment = .center
-        dateLabel.backgroundColor = .blue
+        dateLabel.backgroundColor = .selectionColor
     }
     
     override func displayCalendarDay(calendarDay: CalendarDayInformation) {
@@ -158,6 +158,9 @@ class DayLabel: UILabel {
         text = ["S", "M", "T", "W", "T", "F", "S"][day-1]
         font = UIFont.systemFont(ofSize: 14.0)
         textAlignment = .center
+        if day == 1 || day == 7 {
+            textColor = .orange
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -67,13 +67,6 @@ struct CalendarModel {
     mutating func addEvents(_ events: [CalendarEvent]) {
         events.forEach({
             event in
-//            let eventYear = Calendar.current.component(.year, from: event.startDate)
-//            let eventMonth = Calendar.current.component(.month, from: event.startDate)
-//            let eventDay = Calendar.current.component(.day, from: event.startDate)
-//            if let findIndex = days.index(where: {
-//                day in
-//                return day.day == eventDay && day.month == eventMonth && day.year == eventYear
-//            })
             if let findIndex = searchDayIndex(for: event, in: days, range: 0 ..< days.count) {
                 days[findIndex].add(event: event)
             }

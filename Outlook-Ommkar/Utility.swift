@@ -11,4 +11,7 @@ extension UIColor {
         let grayValue: CGFloat = value/255.0
         return UIColor(red: grayValue, green: grayValue, blue: grayValue, alpha: alpha)
     }
+    static var selectionColor: UIColor {
+        return UIColor.colorWith(red: 52, blue: 135, green: 219)
+    }
 }

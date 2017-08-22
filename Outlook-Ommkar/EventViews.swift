@@ -30,7 +30,7 @@ class ContactImageCollectionViewCell: UICollectionViewCell, ContactDisplayable {
     }
 }
 
-class ContactLabelCollectionViewCell: UICollectionViewCell, ContactDisplayable {
+class ContactLabelCollectionViewCell: UICollectionViewCell, ContactLabelDisplayable {
     let contactLabel = ContactLabel(diameter: 35)
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,6 +55,10 @@ class ContactLabelCollectionViewCell: UICollectionViewCell, ContactDisplayable {
     
     func displayContact(contact: ContactInformation) {
         contactLabel.displayContact(contact: contact)
+    }
+    
+    func setColor(_ color: UIColor) {
+        contactLabel.backgroundColor = color
     }
 }
 
@@ -87,6 +91,11 @@ class AttendeeCollectionView: UICollectionView, HorizontalContactDisplay {
         self.contactList = contactList
         reloadData()
     }
+    func getColor(for index: Int)-> UIColor {
+        let rgbValues: [(CGFloat, CGFloat, CGFloat)] = [(27, 161, 226), (0, 138, 0), (216, 0, 115), (170, 0, 255)]
+        let rgbValue = rgbValues[index % rgbValues.count]
+        return UIColor.colorWith(red: rgbValue.0, blue: rgbValue.1, green: rgbValue.2)
+    }
 }
 
 extension AttendeeCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -100,6 +109,9 @@ extension AttendeeCollectionView: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         if let cell = cell as? ContactDisplayable {
             cell.displayContact(contact: contact)
+        }
+        if let cell = cell as? ContactLabelDisplayable {
+            cell.setColor(getColor(for: indexPath.row))
         }
         return cell
     }

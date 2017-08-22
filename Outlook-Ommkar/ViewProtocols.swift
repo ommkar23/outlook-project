@@ -82,6 +82,9 @@ protocol EventDescriptionDisplay {
 protocol ContactDisplayable {
     func displayContact(contact: ContactInformation)
 }
+protocol ContactLabelDisplayable: ContactDisplayable {
+    func setColor(_ color: UIColor)
+}
 
 protocol CalendarDayDisplayable {
     func displayCalendarDay(calendarDay: CalendarDayInformation)
