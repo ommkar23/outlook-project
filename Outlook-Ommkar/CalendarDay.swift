@@ -1,7 +1,13 @@
 
 import Foundation
 
-struct CalendarDay {
+protocol DayComparable: Comparable {
+    var day: Int { get }
+    var month: Int { get }
+    var year: Int { get }
+}
+
+struct CalendarDay: DayComparable {
     let day: Int
     let month: Int
     let year: Int
@@ -14,9 +20,18 @@ struct CalendarDay {
         self.year = year
         self.weekday = weekday
     }
+    mutating func add(event: CalendarEvent) {
+        var insertIndex = 0
+        if let findIndex = events.index(where: {
+            return event.startDate < $0.startDate
+        }) {
+            insertIndex = findIndex
+        }
+        events.insert(event, at: insertIndex)
+    }
 }
 
-extension CalendarDay: Comparable {
+extension CalendarDay {
     static func == (lhs: CalendarDay, rhs: CalendarDay)-> Bool {
         return (lhs.day == rhs.day) && (lhs.month == rhs.month) && (lhs.year == rhs.year)
     }

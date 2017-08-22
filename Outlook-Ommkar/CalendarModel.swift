@@ -31,9 +31,11 @@ struct CalendarModel {
             let weekday = Calendar.current.component(.weekday, from: $0)
             return CalendarDay(day: day, month: month, year: year, weekday: weekday)
         })
+        //Removing days till range starts from a Sunday
         while days.first?.weekday != 1 {
             _ = days.removeFirst()
         }
+        //Removing days till range ends on a Saturday
         while days.last?.weekday != 7 {
             _ = days.removeLast()
         }
@@ -65,14 +67,15 @@ struct CalendarModel {
     mutating func addEvents(_ events: [CalendarEvent]) {
         events.forEach({
             event in
-            let eventYear = Calendar.current.component(.year, from: event.startDate)
-            let eventMonth = Calendar.current.component(.month, from: event.startDate)
-            let eventDay = Calendar.current.component(.day, from: event.startDate)
-            if let findIndex = days.index(where: {
-                day in
-                return day.day == eventDay && day.month == eventMonth && day.year == eventYear
-            }) {
-                days[findIndex].events.append(event)
+//            let eventYear = Calendar.current.component(.year, from: event.startDate)
+//            let eventMonth = Calendar.current.component(.month, from: event.startDate)
+//            let eventDay = Calendar.current.component(.day, from: event.startDate)
+//            if let findIndex = days.index(where: {
+//                day in
+//                return day.day == eventDay && day.month == eventMonth && day.year == eventYear
+//            })
+            if let findIndex = searchDayIndex(for: event, in: days, range: 0 ..< days.count) {
+                days[findIndex].add(event: event)
             }
         })
         delegate?.modelIsReady()
@@ -136,6 +139,37 @@ struct CalendarModel {
     func getTitleForIndex(at index: Int)-> String {
         let day = days[index]
         return day.titleString
+    }
+}
+
+extension CalendarModel {
+    //MARK: Binary search for inserting events over days array.
+    func searchDayIndex(for event: CalendarEvent, in days: [CalendarDay], range: Range<Int>)-> Int? {
+        if range.lowerBound >= range.upperBound { return nil }
+        else {
+            let mid = range.lowerBound + (range.upperBound - range.lowerBound) / 2
+            if compare(event: event, day: days[mid]) == -1 {
+                return searchDayIndex(for: event, in: days, range: range.lowerBound ..< mid)
+            }
+            else if compare(event: event, day: days[mid]) == 1 {
+                return searchDayIndex(for: event, in: days, range: mid+1 ..< range.upperBound)
+            }
+            else {
+                return mid
+            }
+        }
+    }
+    func compare(event: CalendarEvent, day: CalendarDay)-> Int {
+        let eventDay = Calendar.current.component(.day, from: event.startDate)
+        let eventMonth = Calendar.current.component(.month, from: event.startDate)
+        let eventYear = Calendar.current.component(.year, from: event.startDate)
+        if day.year < eventYear { return 1 }
+        if day.year > eventYear { return -1 }
+        if day.month < eventMonth { return 1 }
+        if day.month > eventMonth { return -1 }
+        if day.day < eventDay { return 1 }
+        if day.day > eventDay { return -1 }
+        return 0
     }
 }
 
