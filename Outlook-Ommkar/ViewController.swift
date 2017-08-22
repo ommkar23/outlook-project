@@ -77,22 +77,23 @@ class ViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return cv
     }()
-    
+    // Tableview cell reuse identifiers
     let noEventCellIdentifier = "NoEventCellReuseIdentifier"
     let basicEventCellIdentifier = "BasicEventInfoCellReuseIDentifier"
     let locationEventCellIdentifier = "LocationEventInfoCellReuseIdentifier"
     let completeEventCellIdentifier = "CompleteEventInfoCellReuseIdentifier"
     let attendeeEventCellIdentifier = "AttendeeEventInfoCellReuseIdentifier"
     
+    //Collectionview cell reuse identifiers
     let calendarCellIdentifier = "CalendarCellReuseIdentifier"
     let selectedCalendarCellIdentifier = "SelectedCalendarCellReuseIdentifier"
     let calendarEventCellIdentifier = "CalendarEventCellReuseIdentifier"
     let calendarMonthCellIdentifier = "CalendarMonthCellReuseIdentifier"
     
+    //Collectionview constants
     let interItemSpacing: CGFloat = 0
     let interLineSpacing: CGFloat = 0.5
     let numberOfItemsPerRow = 7
-    
     var itemSize: CGSize {
         let side: CGFloat = UIScreen.main.bounds.size.width / CGFloat(numberOfItemsPerRow)
         return CGSize(width: side, height: side)
@@ -100,8 +101,6 @@ class ViewController: UIViewController {
     
     var calendarExpanded = false
     var scrollingByEffect = false
-    var shouldForceTableViewToScroll = false
-    var scrollDelegateEnabled = true
     
     var deque = Deque()
     
@@ -109,6 +108,7 @@ class ViewController: UIViewController {
         return calendarExpanded ? CGFloat(4) * (itemSize.height + interLineSpacing) : CGFloat(2) * (itemSize.height + interLineSpacing)
     }
     
+    //Contraint used to toggle calendar expansion
     var cvHeightConstraint: NSLayoutConstraint!
     
     var calendarModel = CalendarModel()
@@ -136,6 +136,7 @@ class ViewController: UIViewController {
         let dayLeading = NSLayoutConstraint(item: dayHeaderView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0)
         let dayTrailing = NSLayoutConstraint(item: dayHeaderView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0)
         let dayHeight = NSLayoutConstraint(item: dayHeaderView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 35)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         let cvTop = NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: dayHeaderView, attribute: .bottom, multiplier: 1.0, constant: 0)
         let cvLeading = NSLayoutConstraint(item: collectionView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0)
@@ -214,29 +215,32 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calendarModel.days[section].hasEvent ? calendarModel.days[section].events.count : 1
+        let dayInfo = calendarModel.dayInformation(at: section)
+        return dayInfo.hasEvent ? dayInfo.eventCount : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if calendarModel.days[indexPath.section].hasEvent {
-            let eventInfo: EventInformation = calendarModel.days[indexPath.section].events[indexPath.row]
-            var cell: EventBasicInfoCell
+        let dayInfo = calendarModel.dayInformation(at: indexPath.section)
+        if dayInfo.hasEvent {
+            let eventInfo: EventInformation = dayInfo.eventInformation(at: indexPath.row)
+            var cell: UITableViewCell
             switch (eventInfo.attendeesList, eventInfo.locationInfo) {
             case (nil, nil):
-                cell = tableView.dequeueReusableCell(withIdentifier: basicEventCellIdentifier, for: indexPath) as! EventBasicInfoCell
+                cell = tableView.dequeueReusableCell(withIdentifier: basicEventCellIdentifier, for: indexPath)
                 break
             case (nil, _):
-                cell = tableView.dequeueReusableCell(withIdentifier: locationEventCellIdentifier, for: indexPath) as! EventLocationInfoCell
+                cell = tableView.dequeueReusableCell(withIdentifier: locationEventCellIdentifier, for: indexPath)
                 break
             case (_, nil):
-                cell = tableView.dequeueReusableCell(withIdentifier: attendeeEventCellIdentifier, for: indexPath) as! EventAttendeeInfoCell
+                cell = tableView.dequeueReusableCell(withIdentifier: attendeeEventCellIdentifier, for: indexPath)
                 break
             case (_, _):
-                cell = tableView.dequeueReusableCell(withIdentifier: completeEventCellIdentifier, for: indexPath) as! EventCompleteInfoCell
+                cell = tableView.dequeueReusableCell(withIdentifier: completeEventCellIdentifier, for: indexPath)
                 break
             }
-            cell.displayEventInformation(eventInfo: eventInfo)
+            if let cell = cell as? EventInformationDisplay {
+                cell.displayEventInformation(eventInfo: eventInfo)
+            }
             return cell
         }
         else {
@@ -252,11 +256,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return calendarModel.displayString(forSection: section)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        return calendarModel.dayInformation(at: section).displayString
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -269,7 +269,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -279,8 +278,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellOptions = calendarModel.calendarCellOptions(forSection: indexPath.row)
-        let calendarDay = calendarModel.days[indexPath.row]
+        let dayInfo = calendarModel.dayInformation(at: indexPath.row)
+        let cellOptions = dayInfo.calendarCellOptions
         let reuseIdentifier: String
         if cellOptions.contains(.selected) {
             reuseIdentifier = selectedCalendarCellIdentifier
@@ -296,7 +295,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         if let cell = cell as? CalendarDayDisplayable {
-            cell.displayCalendarDay(calendarDay: calendarDay)
+            cell.displayCalendarDay(calendarDay: dayInfo)
         }
         return cell
     }
@@ -321,10 +320,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
 }
 
 extension ViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-    }
-    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView is UICollectionView {
             if !calendarExpanded {
@@ -347,7 +342,7 @@ extension ViewController: CalendarModelUpdate {
             [weak self] in
             self?.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
         })
-        title = calendarModel.getTitleForIndex(at: index)
+        title = calendarModel.dayInformation(at: index).titleString
     }
     
     func didDeSelect(at index: Int) {

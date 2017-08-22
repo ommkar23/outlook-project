@@ -1,13 +1,13 @@
 
 import Foundation
 
-protocol DayComparable: Comparable {
-    var day: Int { get }
-    var month: Int { get }
-    var year: Int { get }
+enum CalendarCellOption {
+    case firstDay
+    case selected
+    case hasEvent
 }
 
-struct CalendarDay: DayComparable {
+struct CalendarDay {
     let day: Int
     let month: Int
     let year: Int
@@ -25,44 +25,15 @@ struct CalendarDay: DayComparable {
         events.append(event)
         events.sort()
     }
-}
-
-extension CalendarDay {
-    static func == (lhs: CalendarDay, rhs: CalendarDay)-> Bool {
-        return (lhs.day == rhs.day) && (lhs.month == rhs.month) && (lhs.year == rhs.year)
-    }
-    static func < (lhs: CalendarDay, rhs: CalendarDay)-> Bool {
-        if (lhs.year < rhs.year) {
-            return true
-        }
-        else if (lhs.month < rhs.month) {
-            return true
-        }
-        else if (lhs.day < rhs.day) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-}
-
-extension CalendarDay {
     mutating func select() {
         selected = true
     }
     mutating func deselect() {
         selected = false
     }
-    var isSelected: Bool {
-        return selected
-    }
-    var hasEvent: Bool {
-        return events.count > 0
-    }
-    var displayString: String {
-        return "\(weekdayString), \(monthString) \(dayString)"
-    }
+}
+
+extension CalendarDay: CalendarDayInformation {
     var dayString: String {
         if day/10 == 0 {
             return "0\(day)"
@@ -83,6 +54,32 @@ extension CalendarDay {
     var titleString: String {
         return "\(monthString), \(year)"
     }
+    var displayString: String {
+        return "\(weekdayString), \(monthString) \(dayString)"
+    }
+    var eventCount: Int {
+        return events.count
+    }
+    var hasEvent: Bool {
+        return eventCount > 0
+    }
+    var isSelected: Bool {
+        return selected
+    }
+    var calendarCellOptions: Set<CalendarCellOption> {
+        var options: Set<CalendarCellOption> = []
+        if isSelected {
+            options.insert(.selected)
+        }
+        if day == 1 {
+            options.insert(.firstDay)
+        }
+        if eventCount > 0 {
+            options.insert(.hasEvent)
+        }
+        return options
+    }
+    func eventInformation(at index: Int) -> EventInformation {
+        return events[index]
+    }
 }
-
-extension CalendarDay: CalendarDayInformation {}

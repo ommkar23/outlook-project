@@ -27,6 +27,7 @@
 		03953FE41F4037EB00D213CB /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03953FE31F4037EB00D213CB /* CalendarCell.swift */; };
 		03953FF91F40A14200D213CB /* Events.json in Resources */ = {isa = PBXBuildFile; fileRef = 03953FF81F40A14200D213CB /* Events.json */; };
 		03953FFB1F41540A00D213CB /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03953FFA1F41540A00D213CB /* UtilityViews.swift */; };
+		8A82A74D1F4CBACF004723B5 /* ModelProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A82A74C1F4CBACF004723B5 /* ModelProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		03953FE31F4037EB00D213CB /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		03953FF81F40A14200D213CB /* Events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Events.json; sourceTree = "<group>"; };
 		03953FFA1F41540A00D213CB /* UtilityViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
+		8A82A74C1F4CBACF004723B5 /* ModelProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				034EFE101F420FB000509162 /* CalendarModel.swift */,
 				034EFE0C1F420F4F00509162 /* CalendarDay.swift */,
 				034EFE0D1F420F4F00509162 /* CalendarEvent.swift */,
+				8A82A74C1F4CBACF004723B5 /* ModelProtocols.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				034EFE111F420FB000509162 /* CalendarModel.swift in Sources */,
 				03953FC21F3EC89C00D213CB /* ViewController.swift in Sources */,
 				030F178E1F43BBD7007BC41A /* ViewProtocols.swift in Sources */,
+				8A82A74D1F4CBACF004723B5 /* ModelProtocols.swift in Sources */,
 				030F178C1F438CEE007BC41A /* Utility.swift in Sources */,
 				034EFE0E1F420F4F00509162 /* CalendarDay.swift in Sources */,
 				030F17891F431F4A007BC41A /* EventViews.swift in Sources */,

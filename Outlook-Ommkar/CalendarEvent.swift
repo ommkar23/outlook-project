@@ -6,7 +6,7 @@ enum EventStatus: ColorRepresentable {
     case past
     case present
     case future
-    
+
     var color: UIColor {
         switch self {
         case .past:

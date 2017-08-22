@@ -1,12 +1,6 @@
 
 import Foundation
 
-enum CalendarCellOptions {
-    case firstDay
-    case selected
-    case hasEvent
-}
-
 protocol CalendarModelUpdate: AnyObject {
     func modelIsReady()
     func didSelect(at index: Int)
@@ -17,9 +11,9 @@ struct CalendarModel {
 
     weak var delegate: CalendarModelUpdate?
 
-    var days: [CalendarDay]
+    fileprivate var days: [CalendarDay]
 
-    var selectedIndex: Int?
+    fileprivate var selectedIndex: Int?
     
     init(daysBeforeToday: Int = 90, daysAfterToday: Int = 360) {
         days = (-daysBeforeToday...daysAfterToday).flatMap({
@@ -73,22 +67,6 @@ struct CalendarModel {
         })
         delegate?.modelIsReady()
     }
-
-    var dayCount: Int {
-        return days.count
-    }
-
-    func displayString(forSection at: Int)-> String {
-        return days[at].displayString
-    }
-
-    func dateString(forSection at: Int)-> String {
-        return days[at].dayString
-    }
-
-    func selected(forItem at: Int)-> Bool {
-        return days[at].isSelected
-    }
     
     mutating func selectToday()-> Int? {
         let todayDay = Calendar.current.component(.day, from: Date())
@@ -113,26 +91,7 @@ struct CalendarModel {
         selectedIndex = index
         delegate?.didSelect(at: index)
     }
-
-    func calendarCellOptions(forSection at: Int)-> Set<CalendarCellOptions> {
-        var options: Set<CalendarCellOptions> = []
-        let day = days[at]
-        if day.isSelected {
-            options.insert(.selected)
-        }
-        if day.day == 1 {
-            options.insert(.firstDay)
-        }
-        if day.events.count > 0 {
-            options.insert(.hasEvent)
-        }
-        return options
-    }
     
-    func getTitleForIndex(at index: Int)-> String {
-        let day = days[index]
-        return day.titleString
-    }
 }
 
 extension CalendarModel {
@@ -166,27 +125,12 @@ extension CalendarModel {
     }
 }
 
-extension Date {
-    var weekDay: Int {
-        return Calendar.current.component(.weekday, from: self)
+extension CalendarModel: CalendarInformation {
+    var dayCount: Int {
+        return days.count
     }
-    var dateValue: Int {
-        return Calendar.current.component(.day, from: self)
-    }
-    var month: Int {
-        return Calendar.current.component(.month, from: self)
-    }
-    var shortDayString: String {
-        return dayString.substring(to: dayString.index(dayString.startIndex, offsetBy: 3))
-    }
-    var dayString: String {
-        return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][weekDay - 1]
-    }
-    var shortMonthString: String {
-        return monthString.substring(to: monthString.index(monthString.startIndex, offsetBy: 3))
-    }
-
-    var monthString: String {
-        return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"][month - 1]
+    
+    func dayInformation(at index: Int) -> CalendarDayInformation {
+        return days[index]
     }
 }
