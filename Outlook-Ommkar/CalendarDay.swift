@@ -21,13 +21,9 @@ struct CalendarDay: DayComparable {
         self.weekday = weekday
     }
     mutating func add(event: CalendarEvent) {
-        var insertIndex = 0
-        if let findIndex = events.index(where: {
-            return event.startDate < $0.startDate
-        }) {
-            insertIndex = findIndex
-        }
-        events.insert(event, at: insertIndex)
+        // Assuming average number of events per day is a relatively low number. Sorting every time an event is added is acceptable.
+        events.append(event)
+        events.sort()
     }
 }
 
