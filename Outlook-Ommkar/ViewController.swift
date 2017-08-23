@@ -96,9 +96,15 @@ class ViewController: UIViewController {
     let interItemSpacing: CGFloat = 0
     let interLineSpacing: CGFloat = 0.5
     let numberOfItemsPerRow = 7
+    var calendarCellWidth: CGFloat {
+        var screenWidth = Int(UIScreen.main.bounds.size.width)
+        while screenWidth % 7 != 0 {
+            screenWidth -= 1
+        }
+        return CGFloat(screenWidth / numberOfItemsPerRow)
+    }
     var itemSize: CGSize {
-        let side: CGFloat = UIScreen.main.bounds.size.width / CGFloat(numberOfItemsPerRow)
-        return CGSize(width: side, height: side)
+        return CGSize(width: calendarCellWidth, height: calendarCellWidth)
     }
     
     var calendarExpanded = false
@@ -108,6 +114,9 @@ class ViewController: UIViewController {
     
     var cvHeight: CGFloat {
         return calendarExpanded ? CGFloat(4) * (itemSize.height + interLineSpacing) : CGFloat(2) * (itemSize.height + interLineSpacing)
+    }
+    var cvWidth: CGFloat {
+        return calendarCellWidth * CGFloat(numberOfItemsPerRow)
     }
     
     //Contraint used to toggle calendar expansion
@@ -141,8 +150,8 @@ class ViewController: UIViewController {
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         let cvTop = NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: dayHeaderView, attribute: .bottom, multiplier: 1.0, constant: 0)
-        let cvLeading = NSLayoutConstraint(item: collectionView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0)
-        let cvTrailing = NSLayoutConstraint(item: collectionView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0)
+        let cvCenterX = NSLayoutConstraint(item: collectionView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0)
+        let cvWidthConstraint = NSLayoutConstraint(item: collectionView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: cvWidth)
         cvHeightConstraint = NSLayoutConstraint(item: collectionView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: cvHeight)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -151,7 +160,7 @@ class ViewController: UIViewController {
         let tvTrailing = NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0)
         let tvBottom = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
         NSLayoutConstraint.activate([dayTop, dayLeading, dayTrailing, dayHeight,
-                                     cvTop, cvLeading, cvTrailing, cvHeightConstraint,
+                                     cvTop, cvCenterX, cvWidthConstraint, cvHeightConstraint,
                                      tvTop, tvLeading, tvTrailing, tvBottom])
     }
     
@@ -371,7 +380,6 @@ extension ViewController: CalendarModelUpdate {
         if let todayIndex = calendarModel.selectToday() {
             tableView.scrollToRow(at: IndexPath(row: 0, section: todayIndex), at: .top, animated: false)
             collectionView.scrollToItem(at: IndexPath(row: todayIndex, section: 0), at: .top, animated: false)
-            
         }
     }
     func didUpdateEvent(at indexPath: IndexPath) {

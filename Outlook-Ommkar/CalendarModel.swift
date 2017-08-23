@@ -79,7 +79,7 @@ struct CalendarModel {
         })
         {
             select(at: todayIndex)
-            fetchWeatherInfo(for: 14, from: todayIndex)
+            //fetchWeatherInfo(for: 14, from: todayIndex)
             return todayIndex
         }
         return nil
