@@ -41,6 +41,7 @@ protocol EventInformation {
     var title: String { get }
     var locationInfo: LocationInformation? { get }
     var attendeesList: [ContactInformation]? { get }
+    var weatherIcon: String? { get }
 }
 
 protocol LocationInformation {

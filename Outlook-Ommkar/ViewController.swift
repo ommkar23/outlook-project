@@ -83,6 +83,8 @@ class ViewController: UIViewController {
     let locationEventCellIdentifier = "LocationEventInfoCellReuseIdentifier"
     let completeEventCellIdentifier = "CompleteEventInfoCellReuseIdentifier"
     let attendeeEventCellIdentifier = "AttendeeEventInfoCellReuseIdentifier"
+    let locationWeatherCellIdentifier = "LocationWeatherEventInfoCellReuseIdentifier"
+    let completeWeatherCellIdentifier = "CompleteWeatherEventInfoCellReuseIdentifier"
     
     //Collectionview cell reuse identifiers
     let calendarCellIdentifier = "CalendarCellReuseIdentifier"
@@ -165,6 +167,8 @@ class ViewController: UIViewController {
         tableView.register(EventLocationInfoCell.self, forCellReuseIdentifier: locationEventCellIdentifier)
         tableView.register(EventAttendeeInfoCell.self, forCellReuseIdentifier: attendeeEventCellIdentifier)
         tableView.register(EventCompleteInfoCell.self, forCellReuseIdentifier: completeEventCellIdentifier)
+        tableView.register(EventLocationWeatherInfoCell.self, forCellReuseIdentifier: locationWeatherCellIdentifier)
+        tableView.register(EventCompleteWeatherInfoCell.self, forCellReuseIdentifier: completeWeatherCellIdentifier)
         
         collectionView.register(CalendarDateCell.self, forCellWithReuseIdentifier: calendarCellIdentifier)
         collectionView.register(CalendarSelectedDateCell.self, forCellWithReuseIdentifier: selectedCalendarCellIdentifier)
@@ -228,13 +232,24 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 cell = tableView.dequeueReusableCell(withIdentifier: basicEventCellIdentifier, for: indexPath)
                 break
             case (nil, _):
-                cell = tableView.dequeueReusableCell(withIdentifier: locationEventCellIdentifier, for: indexPath)
+                
+                if let _ = eventInfo.weatherIcon {
+                    cell = tableView.dequeueReusableCell(withIdentifier: locationWeatherCellIdentifier, for: indexPath)
+                }
+                else {
+                    cell = tableView.dequeueReusableCell(withIdentifier: locationEventCellIdentifier, for: indexPath)
+                }
                 break
             case (_, nil):
                 cell = tableView.dequeueReusableCell(withIdentifier: attendeeEventCellIdentifier, for: indexPath)
                 break
             case (_, _):
-                cell = tableView.dequeueReusableCell(withIdentifier: completeEventCellIdentifier, for: indexPath)
+                if let _ = eventInfo.weatherIcon {
+                    cell = tableView.dequeueReusableCell(withIdentifier: completeWeatherCellIdentifier, for: indexPath)
+                }
+                else {
+                    cell = tableView.dequeueReusableCell(withIdentifier: completeEventCellIdentifier, for: indexPath)
+                }
                 break
             }
             if let cell = cell as? EventInformationDisplay {
@@ -356,6 +371,25 @@ extension ViewController: CalendarModelUpdate {
         if let todayIndex = calendarModel.selectToday() {
             tableView.scrollToRow(at: IndexPath(row: 0, section: todayIndex), at: .top, animated: false)
             collectionView.scrollToItem(at: IndexPath(row: todayIndex, section: 0), at: .top, animated: false)
+            
+        }
+    }
+    func didUpdateEvent(at indexPath: IndexPath) {
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
+    
+    func fetchWeatherIcon(at indexPath: IndexPath, for location: LocationInformation, timestamp: Double) {
+        WeatherProvider.fetchWeatherIcon(latitude: location.latitude, longitude: location.longitude, timestamp: timestamp) {
+            [weak self]
+            icon, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else if let icon = icon {
+                self?.calendarModel.addWeatherIconForEvent(at: indexPath, icon: icon)
+            }
         }
     }
 }

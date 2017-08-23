@@ -26,7 +26,8 @@ struct CalendarEvent {
     let organizer: EventPerson
     var attendees: [EventPerson]?
     var location: EventLocation?
-
+    var weatherIcon: String?
+    
     init?(title: String, startDate: Date, endDate: Date, organizer: EventPerson, attendees: [EventPerson]?, location: EventLocation?) {
         // title should not be empty
         guard title.isEmpty != true else { return nil }
@@ -65,6 +66,15 @@ struct CalendarEvent {
             location = EventLocation(locationDictionary: locationDictionary)
         }
         self.init(title: title, startDateString: startDateString, endDateString: endDateString, organizer: organizer, attendees: attendees, location: location)
+    }
+    var shouldFetchWeatherData: Bool {
+        var value = false
+        if let dateAWeekFromNow = Calendar.current.date(byAdding: .day, value: 14, to: Date()) {
+            if startDate < dateAWeekFromNow && startDate >= Date() {
+                value = true
+            }
+        }
+        return value
     }
 }
 

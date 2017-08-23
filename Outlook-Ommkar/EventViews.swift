@@ -382,6 +382,39 @@ class EventLocationInfoCell: EventBasicInfoCell {
     }
 }
 
+class EventLocationWeatherInfoCell: EventLocationInfoCell {
+    let weatherIcon = UIImageView()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addComponents()
+        addLayoutConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func addComponents() {
+        contentView.addSubview(weatherIcon)
+    }
+    
+    private func addLayoutConstraints() {
+        weatherIcon.translatesAutoresizingMaskIntoConstraints = false
+        let leading = NSLayoutConstraint(item: weatherIcon, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1.0, constant: 22)
+        let top = NSLayoutConstraint(item: weatherIcon, attribute: .top, relatedBy: .equal, toItem: timeDescriptionView, attribute: .bottom, multiplier: 1.0, constant: 12.0)
+        let width = NSLayoutConstraint(item: weatherIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44)
+        let height = NSLayoutConstraint(item: weatherIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44)
+        let bottom = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: weatherIcon, attribute: .bottom, multiplier: 1.0, constant: 8.0)
+        NSLayoutConstraint.activate([leading, top, width, height, bottom])
+    }
+    
+    override func displayEventInformation(eventInfo: EventInformation) {
+        super.displayEventInformation(eventInfo: eventInfo)
+        if let weatherIconString = eventInfo.weatherIcon {
+            weatherIcon.image = UIImage(named: "ic_\(weatherIconString)")
+        }
+    }
+}
+
 class EventCompleteInfoCell: EventAttendeeInfoCell {
     let locationView = EventLocationView()
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -412,6 +445,39 @@ class EventCompleteInfoCell: EventAttendeeInfoCell {
         super.displayEventInformation(eventInfo: eventInfo)
         if let locationInfo = eventInfo.locationInfo {
             locationView.displayEventLocation(location: locationInfo)
+        }
+    }
+}
+
+class EventCompleteWeatherInfoCell: EventCompleteInfoCell {
+    let weatherIcon = UIImageView()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addComponents()
+        addLayoutConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func addComponents() {
+        contentView.addSubview(weatherIcon)
+    }
+    
+    private func addLayoutConstraints() {
+        weatherIcon.translatesAutoresizingMaskIntoConstraints = false
+        let leading = NSLayoutConstraint(item: weatherIcon, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1.0, constant: 22)
+        let top = NSLayoutConstraint(item: weatherIcon, attribute: .top, relatedBy: .equal, toItem: timeDescriptionView, attribute: .bottom, multiplier: 1.0, constant: 12.0)
+        let width = NSLayoutConstraint(item: weatherIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44)
+        let height = NSLayoutConstraint(item: weatherIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44)
+        let bottom = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: weatherIcon, attribute: .bottom, multiplier: 1.0, constant: 8.0)
+        NSLayoutConstraint.activate([leading, top, width, height, bottom])
+    }
+    
+    override func displayEventInformation(eventInfo: EventInformation) {
+        super.displayEventInformation(eventInfo: eventInfo)
+        if let weatherIconString = eventInfo.weatherIcon {
+            weatherIcon.image = UIImage(named: "ic_\(weatherIconString)")
         }
     }
 }

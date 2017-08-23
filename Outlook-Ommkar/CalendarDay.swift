@@ -31,6 +31,10 @@ struct CalendarDay {
     mutating func deselect() {
         selected = false
     }
+    
+    mutating func addWeatherIconForEvent(at index: Int, icon: String) {
+        events[index].weatherIcon = icon
+    }
 }
 
 extension CalendarDay: CalendarDayInformation {

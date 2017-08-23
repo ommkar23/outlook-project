@@ -5,6 +5,8 @@ protocol CalendarModelUpdate: AnyObject {
     func modelIsReady()
     func didSelect(at index: Int)
     func didDeSelect(at index: Int)
+    func didUpdateEvent(at indexPath: IndexPath)
+    func fetchWeatherIcon(at indexPath: IndexPath, for location: LocationInformation, timestamp: Double)
 }
 
 struct CalendarModel {
@@ -77,9 +79,22 @@ struct CalendarModel {
         })
         {
             select(at: todayIndex)
+            fetchWeatherInfo(for: 14, from: todayIndex)
             return todayIndex
         }
         return nil
+    }
+    
+    func fetchWeatherInfo(for numberOfDays: Int, from dayIndex: Int) {
+        (dayIndex...dayIndex+numberOfDays).forEach({
+            section in
+            days[section].events.enumerated().forEach({
+                (row, event) in
+                guard let location = event.locationInfo else { return }
+                let startTimeStamp = event.startDate.timeIntervalSince1970
+                delegate?.fetchWeatherIcon(at: IndexPath(row: row, section: section), for: location, timestamp: startTimeStamp)
+            })
+        })
     }
 
     mutating func select(at index: Int) {
@@ -90,6 +105,11 @@ struct CalendarModel {
         days[index].select()
         selectedIndex = index
         delegate?.didSelect(at: index)
+    }
+    
+    mutating func addWeatherIconForEvent(at indexPath: IndexPath, icon: String) {
+        days[indexPath.section].addWeatherIconForEvent(at: indexPath.row, icon: icon)
+        delegate?.didUpdateEvent(at: indexPath)
     }
     
 }
